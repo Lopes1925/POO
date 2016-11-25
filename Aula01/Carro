@@ -1,0 +1,22 @@
+<?php
+
+class Carro{
+	public $cor = "Branco";
+	private $motor = 1.0;
+	private $porta = 4;
+	private $modelo = "A3"; //
+	private $marca = "AUDI";
+	private $tanqueCombustivel = 0;
+
+	public function ligar(){
+	}
+
+	public function desligar(){
+	}
+
+	public function andar(){
+	}
+
+	public function abastecer(){
+	}
+}
