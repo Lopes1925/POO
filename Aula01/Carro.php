@@ -5,26 +5,60 @@ class Carro{
 	const MARCA = "AUDI";
 
 	public $cor;
-	private $motor = 1.0;
+        
+        /**
+         * @var Motor 
+         */
+	private $motor;
 	private $porta = 4;
 	
 	private $tanqueCombustivel = 0;
 
-	public function __construct($cor = "Branco"){
+	/**
+         * 
+         * @param Motor $motor
+         * @param string $cor
+         */
+        public function __construct(Motor $motor, $cor = "Branco"){
 		$this->tanqueCombustivel = 10;
 		$this->cor = $cor;
+                $this->motor = $motor;
 	}
 
-	public function ligar(){
+	/**
+         * Liga o motor
+         */
+        public function ligar(){
 	}
 
-	public function desligar(){
+	/**
+         * Desliga o motor
+         */
+        public function desligar(){
 	}
 
-	public function andar(){
+	/**
+         * Faz o carro andar
+         * @param type $torque
+         */
+        private function andar($torque){
+            echo "Andou ".$torque." Metros\n";
 	}
+        
+        /**
+         * Envia aceleração ao motor
+         * @param int $valor Valor da aceleração informada
+         */
+        public function acelerar($valor){
+            $torque = $this->motor->acelerar($valor);
+            $this->andar($torque);
+        }
 
-	public function abastecer($valor){
+        /**
+         * Abastece o veículo
+         * @param int $valor Valor a ser colocado no tanque
+         */
+        public function abastecer($valor){
 		$this->tanqueCombustivel += $valor;
 	}
 }
