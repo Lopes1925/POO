@@ -1,15 +1,20 @@
 <?php
+
+namespace POO\Aula01\Motor;
+
+use POO\Aula01\Motor\Motor;
+
 /**
  * Classe generica de motor
  * 
  * @author Bruno
  * @link https://github.com/Lopes1925/POO
  */
-class Motor {
+abstract class Motor {
     const POTENCIA = 1.0;
     
     private $tipoCombustivel = "Flex";
-    private $aceleracao = 0;
+    protected $aceleracao = 0;
     
     /**
      * Acelera o motor
