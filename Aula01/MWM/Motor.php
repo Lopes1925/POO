@@ -2,6 +2,8 @@
 
 namespace MWM;
 
+use POO\Aula01\Motor\InterfaceMotor;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,10 +11,13 @@ namespace MWM;
  */
 
 /**
- * Description of Motor
+ * Motor MWM
  *
- * @author aluno
+ * @author Bruno
  */
-class Motor {
-    //put your code here
+class Motor implements InterfaceMotor{
+    public function acelerar($valor = 0){
+        return $valor;
+    }
+
 }

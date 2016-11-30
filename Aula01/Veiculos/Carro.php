@@ -3,6 +3,7 @@
 namespace POO\Aula01\Veiculos;
 
 use POO\Aula01\Motor\Motor;
+use POO\Aula01\Motor\InterfaceMotor;
 
 class Carro{
 	const MODELO = "A3"; //CONST 
@@ -23,25 +24,24 @@ class Carro{
          * @param Motor $motor
          * @param string $cor
          */
-        public function __construct(Motor $motor, $cor = "Branco"){
+        public function __construct(InterfaceMotor $motor, $cor = "Branco"){
 		$this->tanqueCombustivel = 10;
 		$this->cor = $cor;
                 $this->motor = $motor;
 	}
 
 	/**
-         * Liga o motor
+         * Liga ou Desliga o motor
          */
-        public function ligar(){
-	}
+        public function ligaDesliga(){
+            if($this->motor->estaLigado()){
+                $this->motor->desliga();
+            }else{
+                $this->motor->ligar();
+            }
+        }
 
-	/**
-         * Desliga o motor
-         */
-        public function desligar(){
-	}
-
-	/**
+        /**
          * Faz o carro andar
          * @param type $torque
          */
@@ -54,8 +54,15 @@ class Carro{
          * @param int $valor Valor da aceleração informada
          */
         public function acelerar($valor){
-            $torque = $this->motor->acelerar($valor);
-            $this->andar($torque);
+            try{
+                echo "Antes de acelerar \n";
+                $torque = $this->motor->acelerar($valor);
+                $this->andar($torque);
+                echo "Depois de acelerar \n";
+            }  catch (\Exception $e){
+                echo $e->getMessage();
+            }
+            echo "Fim da função \n";
         }
 
         /**
